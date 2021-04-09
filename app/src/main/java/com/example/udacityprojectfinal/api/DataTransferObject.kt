@@ -27,5 +27,5 @@ data class NetworkUser(
     val email: String
 )
 
-@JsonClass(generateAdapter = true)
-data class Network
+//@JsonClass(generateAdapter = true)
+//data class Network
