@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="welcomeViewModel"
+            type="com.example.udacityprojectfinal.ui.welcome.WelcomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/welcome_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.welcome.WelcomeFragment">
+
+        <ImageView
+            android:id="@+id/imageGithub"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="64dp"
+            android:src="@drawable/github"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/logo_github" />
+
+        <TextView
+            android:id="@+id/textWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textStyle"
+            android:text="@string/text_welcome"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintBottom_toTopOf="@+id/goToInstructions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageGithub" />
+
+        <Button
+            android:id="@+id/goToInstructions"
+            style="@style/Background_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/background_button"
+            android:text="@string/go_instructions_button"
+            android:onClick="@{() -> welcomeViewModel.navigateToInstruction()}"
+            app:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

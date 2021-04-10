@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">UdacityProjectFinal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo_github">LOGO GITHUB</string>
+    <string name="text_welcome">Welcome to the app that helps you search for users and their Github repositories</string>
+    <string name="go_instructions_button">Go Instructions</string>
+    <string name="instructions_app">Below are some instructions for using the app</string>
+    <string name="instructions_app_input">To search for a user just type the name in the input.</string>
+    <string name="instructions_click">Right after, just choose one and you will be redirected to this user\'s profile.</string>
+    <string name="instructions_profile">The user profile screen will be displayed on the user profile screen and you will be able to see their repositories.</string>
+    <string name="button_search_user">SEARCH USER</string>
+    <string name="go_to_users_favorites">Go to users favorites</string>
 </resources>
