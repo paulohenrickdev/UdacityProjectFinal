@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.udacityprojectfinal.database.getDatabase
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -15,7 +13,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
     init {
-        getDatabase(application)
+//        getDatabase(application)
     }
 
     fun navigate() {

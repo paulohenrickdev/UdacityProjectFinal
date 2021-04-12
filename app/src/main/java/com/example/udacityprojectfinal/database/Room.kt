@@ -16,22 +16,22 @@ interface UserDao {
 //    fun getAllUsers() : LiveData<List<User>>
 }
 
-@Database(entities = [DatabaseUser::class], version = 1)
-abstract class UserDatabase : RoomDatabase() {
-    abstract val userDao: UserDao
-}
-
-
-private lateinit var INSTANCE: UserDatabase
-
-fun getDatabase(context: Context): UserDatabase {
-    synchronized(DatabaseUser::class.java) {
-        if(!::INSTANCE.isInitialized) {
-            INSTANCE = Room.databaseBuilder(context.applicationContext,
-                UserDatabase::class.java,
-                "asteroid").build()
-        }
-    }
-
-    return INSTANCE
-}
+//@Database(entities = [DatabaseUser::class], version = 1)
+//abstract class UserDatabase : RoomDatabase() {
+//    abstract val userDao: UserDao
+//}
+//
+//
+//private lateinit var INSTANCE: UserDatabase
+//
+//fun getDatabase(context: Context): UserDatabase {
+//    synchronized(DatabaseUser::class.java) {
+//        if(!::INSTANCE.isInitialized) {
+//            INSTANCE = Room.databaseBuilder(context.applicationContext,
+//                UserDatabase::class.java,
+//                "asteroid").build()
+//        }
+//    }
+//
+//    return INSTANCE
+//}
