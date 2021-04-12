@@ -36,6 +36,7 @@ class InstructionsFragment : Fragment() {
         viewModel.eventNavigateInstructions.observe(viewLifecycleOwner, Observer { navigateToSearchUser ->
             if(navigateToSearchUser) {
                 findNavController().navigate(InstructionsFragmentDirections.actionInstructionsFragmentToMainFragment())
+                viewModel.navigateToSearchUserComplete()
             }
         })
 

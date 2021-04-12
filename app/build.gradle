@@ -83,4 +83,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
     implementation "android.arch.work:work-runtime-ktx:$version_work"
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

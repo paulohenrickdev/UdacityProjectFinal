@@ -48,19 +48,12 @@
     </fragment>
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.udacityprojectfinal.ui.UserFragment"
+        android:name="com.example.udacityprojectfinal.ui.user.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" >
         <action
             android:id="@+id/action_userFragment_to_repositoriesFragment"
             app:destination="@id/repositoriesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
-        <action
-            android:id="@+id/action_userFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
@@ -71,12 +64,5 @@
         android:name="com.example.udacityprojectfinal.ui.RepositoriesFragment"
         android:label="fragment_repositories"
         tools:layout="@layout/fragment_repositories" >
-        <action
-            android:id="@+id/action_repositoriesFragment_to_userFragment"
-            app:destination="@id/userFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
 </navigation>
