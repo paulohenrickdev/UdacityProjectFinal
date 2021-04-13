@@ -11,4 +11,6 @@
     <string name="instructions_profile">The user profile screen will be displayed on the user profile screen and you will be able to see their repositories.</string>
     <string name="button_search_user">SEARCH USER</string>
     <string name="go_to_users_favorites">Go to users favorites</string>
+    <string name="udacity_final_project">Udacity Final Project</string>
+    <string name="made_by_npaulo_henrick">Made by\nPaulo Henrick</string>
 </resources>
