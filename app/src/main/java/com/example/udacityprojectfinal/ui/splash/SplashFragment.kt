@@ -30,7 +30,7 @@ class SplashFragment : Fragment() {
             }
 
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
+//                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
             }
 
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {

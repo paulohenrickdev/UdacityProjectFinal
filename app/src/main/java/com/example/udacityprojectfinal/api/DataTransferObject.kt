@@ -19,12 +19,12 @@ fun NetWorkRepository.asDomainModel(): Repository {
 }
 
 data class NetworkUser(
-    val login: String,
     val name: String,
     val followers: String,
     val following: String,
     val avatar_url: String,
-    val email: String
+    val location: String,
+    val public_repos: Int
 )
 
 //@JsonClass(generateAdapter = true)
