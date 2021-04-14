@@ -8,7 +8,6 @@ import com.example.udacityprojectfinal.model.User
 
 @Dao
 interface UserDao {
-
 //    @Query("select * from userdatabase")
 //    fun getUsers() : LiveData<List<User>>
 

@@ -1,8 +1,10 @@
 package com.example.udacityprojectfinal.database
 
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.udacityprojectfinal.model.User
 
+@Entity
 data class DatabaseUser constructor(
     @PrimaryKey
     val id: Long,
