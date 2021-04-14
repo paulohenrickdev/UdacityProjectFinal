@@ -19,12 +19,12 @@ interface GithbuService {
     @GET("/users/{user}")
     suspend fun getUser(
         @Path("user") user: String
-    ) : User
+    ) : NetworkUser
 
     @GET("/users/{user}/repos")
     suspend fun getUserRepositories(
         @Path("user") user: String,
-    ) : Repository
+    ) : NetWorkRepository
 }
 
 private val moshi = Moshi.Builder()
