@@ -13,6 +13,8 @@ interface UserDao {
 
 //    @Query("select * from databaseuser")
 //    fun getAllUsers() : LiveData<List<User>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: DatabaseUser)
 }
 
 @Database(entities = [DatabaseUser::class], version = 1)

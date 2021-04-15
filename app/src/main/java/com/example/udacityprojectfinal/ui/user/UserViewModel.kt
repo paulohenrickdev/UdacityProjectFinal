@@ -1,19 +1,19 @@
 package com.example.udacityprojectfinal.ui.user
 
-import android.graphics.Bitmap
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.udacityprojectfinal.api.asDatabaseModel
+import com.example.udacityprojectfinal.database.getDatabase
 import com.example.udacityprojectfinal.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class UserViewModel : ViewModel() {
+class UserViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _userRepository = UserRepository()
+    val database = getDatabase(application)
+    private val _userRepository = UserRepository(database)
 
     private val _eventNavigateToRepositories = MutableLiveData<Boolean>()
     val eventNavigateToRepositories : LiveData<Boolean>
@@ -25,6 +25,7 @@ class UserViewModel : ViewModel() {
                 val user = withContext(Dispatchers.IO) {
                     _userRepository.getUserGithub()
                 }
+                    _userRepository.insertUser(user.asDatabaseModel())
                 Log.i("TESTE", user.toString())
             } catch (e: Exception) {
                 e.printStackTrace()

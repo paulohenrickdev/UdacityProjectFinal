@@ -1,5 +1,8 @@
 package com.example.udacityprojectfinal.api
 
+import androidx.room.Database
+import com.example.udacityprojectfinal.database.DatabaseUser
+import com.example.udacityprojectfinal.model.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -18,3 +21,16 @@ data class NetworkUser(
     @Json(name = "avatar_url") val avatar_url: String,
     @Json(name = "email") val email: String?
 )
+
+fun NetworkUser.asDatabaseModel(): DatabaseUser {
+    return DatabaseUser(
+        id,
+        login,
+        name,
+        followers,
+        following,
+        avatar_url,
+        location,
+        public_repos
+    )
+}

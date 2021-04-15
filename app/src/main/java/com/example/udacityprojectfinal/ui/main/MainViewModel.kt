@@ -14,7 +14,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
     init {
-//        getDatabase(application)
+
     }
 
     fun navigate() {
