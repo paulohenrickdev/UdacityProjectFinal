@@ -7,12 +7,12 @@ import com.example.udacityprojectfinal.database.UserDatabase
 import com.example.udacityprojectfinal.model.User
 
 class UserRepository(private val databaseUser: UserDatabase) {
-    suspend fun getUserGithub(): NetworkUser {
-        val response = Network.githubService.getUser("paulohenrickdev")
+    suspend fun getUserGithub(user: String): NetworkUser {
+        val response = Network.githubService.getUser(user)
         return response
     }
 
-    suspend fun insertUser(user: DatabaseUser) {
+    fun insertUser(user: DatabaseUser) {
         databaseUser.userDao.insert(user)
     }
 }

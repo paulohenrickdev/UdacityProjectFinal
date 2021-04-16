@@ -29,6 +29,10 @@ class UserFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         binding.viewModelUser = viewModel
 
+//        binding.goToRepositories.setOnClickListener {
+//
+//        }
+
         viewModel.eventNavigateToRepositories.observe(viewLifecycleOwner, Observer { navigateToRepositories ->
             if(navigateToRepositories) {
                 findNavController().navigate(UserFragmentDirections.actionUserFragmentToRepositoriesFragment())

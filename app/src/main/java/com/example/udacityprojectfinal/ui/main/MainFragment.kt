@@ -41,20 +41,4 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.menu_main, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//
-//        when(item.itemId) {
-//            R.id.goToFavorites -> {
-//                Toast.makeText(context, "GO TO FAVORITES", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//
-//        return true
-//    }
 }

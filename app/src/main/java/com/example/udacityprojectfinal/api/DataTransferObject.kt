@@ -15,22 +15,26 @@ data class NetWorkRepository(
 
 @JsonClass(generateAdapter = true)
 data class NetworkUser(
+    @Json(name = "id") val id: Long,
     @Json(name = "login") val name: String,
     @Json(name = "followers") val followers: String,
     @Json(name = "following") val following: String,
     @Json(name = "avatar_url") val avatar_url: String,
-    @Json(name = "email") val email: String?
+    @Json(name = "email") val email: String?,
+    @Json(name = "location") val location: String?,
+    @Json(name = "public_repos")val publicRepos: Int
 )
+
 
 fun NetworkUser.asDatabaseModel(): DatabaseUser {
     return DatabaseUser(
         id,
-        login,
+        name,
         name,
         followers,
         following,
         avatar_url,
-        location,
-        public_repos
+        location ?: "",
+        publicRepos
     )
 }
