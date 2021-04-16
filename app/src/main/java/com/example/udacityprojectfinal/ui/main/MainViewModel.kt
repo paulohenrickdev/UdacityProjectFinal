@@ -37,18 +37,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun searchUser(user: String) {
         Log.i("TAG", user)
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                _loadingButton.value = true
-//                val user = _userRepository.getUserGithub(user)
-//                _userRepository.insertUser(user.asDatabaseModel())
-//                _loadingButton.value = false
-//                _eventNavigate.value = true
-//                Log.i("TESTE", user.toString())
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//        }
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _loadingButton.value = true
+                val user = _userRepository.getUserGithub(user)
+                _userRepository.insertUser(user.asDatabaseModel())
+                _loadingButton.value = false
+                _eventNavigate.value = true
+                Log.i("TESTE", user.toString())
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
     fun navigate() {
