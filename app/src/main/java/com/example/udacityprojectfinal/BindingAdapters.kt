@@ -1,8 +1,10 @@
 package com.example.udacityprojectfinal
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 
 @BindingAdapter("android:visibility")
 fun setVisibility(view: View, loading: Boolean){
@@ -11,4 +13,9 @@ fun setVisibility(view: View, loading: Boolean){
     } else {
         view.visibility = View.GONE
     }
+}
+
+@BindingAdapter("imageUrl")
+fun setPhotoUser(imageView: ImageView, url: String) {
+    Glide.with(imageView.context).load(url).into(imageView)
 }

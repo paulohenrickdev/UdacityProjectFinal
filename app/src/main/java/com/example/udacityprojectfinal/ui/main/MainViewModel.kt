@@ -47,7 +47,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 _userRepository.insertUser(user.asDatabaseModel())
                 Log.i("TESTE", user.toString())
                 showLoadingComplete()
-//                navigate()
+                navigate()
             } catch (e: Exception) {
                 e.printStackTrace()
                 showLoadingComplete()
