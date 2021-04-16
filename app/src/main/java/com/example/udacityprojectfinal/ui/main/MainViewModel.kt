@@ -10,7 +10,9 @@ import com.example.udacityprojectfinal.api.asDatabaseModel
 import com.example.udacityprojectfinal.database.getDatabase
 import com.example.udacityprojectfinal.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.invoke
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -21,6 +23,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _eventNavigate = MutableLiveData<Boolean>()
     val eventNavigate: LiveData<Boolean>
         get() = _eventNavigate
+
+    val _searchQuery = MutableLiveData<String>()
 
     private val _loadingButton = MutableLiveData<Boolean>()
     val loadingButton: LiveData<Boolean>
@@ -35,19 +39,31 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun searchUser(user: String) {
-        Log.i("TAG", user)
+    fun searchUser() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _loadingButton.value = true
-                val user = _userRepository.getUserGithub(user)
+                showLoading()
+                val user = _userRepository.getUserGithub(_searchQuery.value.toString())
                 _userRepository.insertUser(user.asDatabaseModel())
-                _loadingButton.value = false
-                _eventNavigate.value = true
                 Log.i("TESTE", user.toString())
+                showLoadingComplete()
+//                navigate()
             } catch (e: Exception) {
                 e.printStackTrace()
+                showLoadingComplete()
             }
+        }
+    }
+
+    private suspend fun showLoading() {
+        withContext(Dispatchers.Main) {
+            _loadingButton.value = true
+        }
+    }
+
+    private suspend fun showLoadingComplete() {
+        withContext(Dispatchers.Main) {
+            _loadingButton.value = false
         }
     }
 

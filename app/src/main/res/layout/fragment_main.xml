@@ -48,6 +48,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text"
+                android:text="@={mainViewModel._searchQuery}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -59,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button"
-            android:onClick="@{() -> mainViewModel.searchUser(filledTextField.getText().toString())}"
+            android:onClick="@{() -> mainViewModel.searchUser()}"
             android:text="@string/button_search_user"
             android:visibility="@{!mainViewModel.loadingButton}"
             app:backgroundTint="@color/black"
@@ -81,14 +82,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/filledTextField"
             app:layout_constraintVertical_bias="0.287" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="198dp"
-            tools:layout_editor_absoluteY="100dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

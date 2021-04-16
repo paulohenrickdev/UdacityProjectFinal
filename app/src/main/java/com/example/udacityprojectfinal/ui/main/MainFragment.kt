@@ -29,6 +29,7 @@ class MainFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.mainViewModel = viewModel
 
         viewModel.eventNavigate.observe(viewLifecycleOwner, Observer { navigation ->
