@@ -16,4 +16,7 @@
     <string name="made_by_npaulo_henrick">Made by\nPaulo Henrick</string>
     <string name="search_for_a_user_below">Search for a user below</string>
     <string name="error_call_api">There was an error fetching the user</string>
+    <string name="notification_channel_name">final_project</string>
+    <string name="title_notification">Search for a user on github</string>
+    <string name="content_notification">Enter the app and search for any existing user on github</string>
 </resources>
