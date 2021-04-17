@@ -29,7 +29,7 @@ fun getDatabase(context: Context): UserDatabase {
             INSTANCE = Room.databaseBuilder(
                 context.applicationContext,
                 UserDatabase::class.java,
-                "asteroid"
+                "user"
             ).build()
         }
     }

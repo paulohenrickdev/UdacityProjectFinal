@@ -25,6 +25,19 @@ data class NetworkUser(
     @Json(name = "public_repos")val publicRepos: Int
 )
 
+fun NetworkUser.asDomain() : User {
+    return User(
+        id,
+        name,
+        name,
+        followers,
+        following,
+        avatar_url,
+        location ?: "",
+        publicRepos
+    )
+}
+
 
 fun NetworkUser.asDatabaseModel(): DatabaseUser {
     return DatabaseUser(

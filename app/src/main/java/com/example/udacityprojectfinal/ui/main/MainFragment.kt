@@ -1,6 +1,7 @@
 package com.example.udacityprojectfinal.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -32,9 +33,15 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.mainViewModel = viewModel
 
+        viewModel.error.observe(viewLifecycleOwner, Observer { error ->
+            if(error) {
+                Toast.makeText(context, getString(R.string.error_call_api), Toast.LENGTH_SHORT).show()
+            }
+        })
+
         viewModel.eventNavigate.observe(viewLifecycleOwner, Observer { navigation ->
             if(navigation) {
-                findNavController().navigate(MainFragmentDirections.actionMainFragmentToUserFragment())
+//                findNavController().navigate(MainFragmentDirections.actionMainFragmentToUserFragment())
                 viewModel.navigateComplete()
             }
         })

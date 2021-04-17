@@ -6,19 +6,27 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.udacityprojectfinal.api.NetworkUser
 import com.example.udacityprojectfinal.api.asDatabaseModel
+import com.example.udacityprojectfinal.api.asDomain
 import com.example.udacityprojectfinal.database.getDatabase
+import com.example.udacityprojectfinal.model.User
 import com.example.udacityprojectfinal.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.invoke
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val database = getDatabase(application)
     private val _userRepository = UserRepository(database)
+
+    private val _user = MutableLiveData<User>()
+    val user : LiveData<User>
+        get() = _user
 
     private val _eventNavigate = MutableLiveData<Boolean>()
     val eventNavigate: LiveData<Boolean>
@@ -30,14 +38,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val loadingButton: LiveData<Boolean>
         get() = _loadingButton
 
+    private val _error = MutableLiveData(false)
+    val error : LiveData<Boolean>
+        get() = _error
+
     /*TODO
      Quando clicar no botão de pesquisar o usuario, será salvo automaticamente e controlar o estado do loading
     O usuario podera clicar para ver o seu histórico. Irá ver o repositório do usuario que clicar
     */
-
-    init {
-
-    }
 
     fun searchUser() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -45,30 +53,41 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 showLoading()
                 val user = _userRepository.getUserGithub(_searchQuery.value.toString())
                 _userRepository.insertUser(user.asDatabaseModel())
-                Log.i("TESTE", user.toString())
+                convertNetworkUserAsUser(user)
                 showLoadingComplete()
-                navigate()
+//                navigate()
             } catch (e: Exception) {
                 e.printStackTrace()
                 showLoadingComplete()
+                errorCallAPI()
             }
         }
     }
 
+    private fun convertNetworkUserAsUser(user: NetworkUser) {
+        _user.postValue(user.asDomain())
+    }
+
     private suspend fun showLoading() {
         withContext(Dispatchers.Main) {
-            _loadingButton.value = true
+            _loadingButton.postValue(true)
         }
     }
 
     private suspend fun showLoadingComplete() {
         withContext(Dispatchers.Main) {
-            _loadingButton.value = false
+            _loadingButton.postValue(false)
         }
     }
 
-    fun navigate() {
-        _eventNavigate.value = true
+    suspend fun errorCallAPI() {
+        withContext(Dispatchers.Main) {
+            _error.postValue(true)
+        }
+    }
+
+    private fun navigate() {
+        _eventNavigate.postValue(true)
     }
 
     fun navigateComplete() {
