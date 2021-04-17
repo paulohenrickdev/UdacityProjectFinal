@@ -12,5 +12,5 @@ data class User(
     val following: String,
     val avatar_url: String,
     val location: String,
-    val public_repos: Int
+    val public_repos: String
 ) : Parcelable

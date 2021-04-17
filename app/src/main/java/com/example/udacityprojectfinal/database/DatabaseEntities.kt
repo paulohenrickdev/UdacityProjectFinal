@@ -14,7 +14,7 @@ data class DatabaseUser constructor(
     val following: String,
     val avatar_url: String,
     val location: String,
-    val public_repos: Int
+    val public_repos: String
 )
 
 fun List<DatabaseUser>.asDomainModel() : List<User> {

@@ -5,7 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Repository(
-    val language: String,
-    val description: String,
-    val name: String
+    val id: Long,
+    val name: String,
+    val description: String?,
+    val language: String
 ) : Parcelable

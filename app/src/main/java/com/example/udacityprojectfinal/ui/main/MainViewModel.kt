@@ -42,11 +42,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val error : LiveData<Boolean>
         get() = _error
 
-    /*TODO
-     Quando clicar no botão de pesquisar o usuario, será salvo automaticamente e controlar o estado do loading
-    O usuario podera clicar para ver o seu histórico. Irá ver o repositório do usuario que clicar
-    */
-
     fun searchUser() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -55,7 +50,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 _userRepository.insertUser(user.asDatabaseModel())
                 convertNetworkUserAsUser(user)
                 showLoadingComplete()
-//                navigate()
+                navigate()
             } catch (e: Exception) {
                 e.printStackTrace()
                 showLoadingComplete()

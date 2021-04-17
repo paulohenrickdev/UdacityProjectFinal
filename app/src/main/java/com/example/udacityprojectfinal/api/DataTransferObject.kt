@@ -1,17 +1,32 @@
 package com.example.udacityprojectfinal.api
 
-import androidx.room.Database
 import com.example.udacityprojectfinal.database.DatabaseUser
+import com.example.udacityprojectfinal.model.Repository
 import com.example.udacityprojectfinal.model.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class NetWorkRepository(
-    val language: String,
-    val description: String,
-    val name: String
+data class NetworkRepository(
+    @Json(name = "id") val id: Long,
+    @Json(name = "name") val name: String,
+    @Json(name = "description") val description: String?,
+    @Json(name = "language") val language: String,
 )
+
+@JsonClass(generateAdapter = true)
+data class NetworkRepositoryContainer(val repos: List<NetworkRepository>)
+
+fun NetworkRepositoryContainer.asDomain(): List<Repository> {
+    return repos.map {
+        Repository(
+            it.id,
+            it.name,
+            it.description,
+            it.language
+        )
+    }
+}
 
 @JsonClass(generateAdapter = true)
 data class NetworkUser(
@@ -22,10 +37,10 @@ data class NetworkUser(
     @Json(name = "avatar_url") val avatar_url: String,
     @Json(name = "email") val email: String?,
     @Json(name = "location") val location: String?,
-    @Json(name = "public_repos")val publicRepos: Int
+    @Json(name = "public_repos") val publicRepos: String
 )
 
-fun NetworkUser.asDomain() : User {
+fun NetworkUser.asDomain(): User {
     return User(
         id,
         name,

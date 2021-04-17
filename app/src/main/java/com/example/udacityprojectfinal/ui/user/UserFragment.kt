@@ -29,13 +29,13 @@ class UserFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         binding.viewModelUser = viewModel
 
-//        binding.goToRepositories.setOnClickListener {
-//
-//        }
+        val user = UserFragmentArgs.fromBundle(requireArguments()).user
+
+        binding.user = user
 
         viewModel.eventNavigateToRepositories.observe(viewLifecycleOwner, Observer { navigateToRepositories ->
             if(navigateToRepositories) {
-                findNavController().navigate(UserFragmentDirections.actionUserFragmentToRepositoriesFragment())
+                findNavController().navigate(UserFragmentDirections.actionUserFragmentToRepositoriesFragment(user))
                 viewModel.navigateToRepositoriesComplete()
             }
         })
