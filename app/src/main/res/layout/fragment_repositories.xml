@@ -5,9 +5,6 @@
     tools:context=".ui.repositories.RepositoriesFragment">
 
     <data>
-
-        <import type="android.view.View" />
-
         <variable
             name="reposViewModel"
             type="com.example.udacityprojectfinal.ui.repositories.RepositoriesViewModel" />
@@ -24,6 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:listData="@{reposViewModel.reposList}"
             tools:listitem="@layout/item_repositories" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

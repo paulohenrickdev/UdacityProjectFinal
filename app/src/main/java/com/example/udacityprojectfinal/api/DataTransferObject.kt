@@ -11,7 +11,7 @@ data class NetworkRepository(
     @Json(name = "id") val id: Long,
     @Json(name = "name") val name: String,
     @Json(name = "description") val description: String?,
-    @Json(name = "language") val language: String,
+    @Json(name = "language") val language: String?,
 )
 
 @JsonClass(generateAdapter = true)
