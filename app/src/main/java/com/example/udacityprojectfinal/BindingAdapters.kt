@@ -22,9 +22,3 @@ fun setVisibility(view: View, loading: Boolean){
 fun setPhotoUser(imageView: ImageView, url: String) {
     Glide.with(imageView.context).load(url).into(imageView)
 }
-
-@BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Repository>) {
-    val adapter = recyclerView.adapter as RepositoryAdapter
-    adapter.submitList(data)
-}

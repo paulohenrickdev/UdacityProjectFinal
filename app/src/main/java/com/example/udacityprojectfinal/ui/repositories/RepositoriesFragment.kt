@@ -2,10 +2,12 @@ package com.example.udacityprojectfinal.ui.repositories
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.udacityprojectfinal.R
@@ -31,7 +33,17 @@ class RepositoriesFragment : Fragment() {
 
         val viewModelFactory = RepositoryViewModelFactory(user!!, application)
 
-        binding.reposViewModel = ViewModelProvider(this, viewModelFactory).get(RepositoriesViewModel::class.java)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(RepositoriesViewModel::class.java)
+
+        binding.reposViewModel = viewModel
+
+        val adapter = RepositoryAdapter()
+
+        binding.recyclerView.adapter = adapter
+
+        viewModel.reposList.observe(viewLifecycleOwner, Observer { repos ->
+           adapter.submitList(repos)
+        })
 
         // Inflate the layout for this fragment
         return binding.root
