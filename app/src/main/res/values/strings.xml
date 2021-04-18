@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">UdacityProjectFinal</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -19,4 +18,5 @@
     <string name="notification_channel_name">final_project</string>
     <string name="title_notification">Search for a user on github</string>
     <string name="content_notification">Enter the app and search for any existing user on github</string>
+    <string name="button_hist">Search history</string>
 </resources>

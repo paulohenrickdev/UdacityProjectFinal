@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }.build()
 
-        val repeatingNotification = PeriodicWorkRequestBuilder<NotificationWorkManager>(1, TimeUnit.MINUTES)
+        val repeatingNotification = PeriodicWorkRequestBuilder<NotificationWorkManager>(1, TimeUnit.DAYS)
             .setConstraints(constraints)
             .build()
 

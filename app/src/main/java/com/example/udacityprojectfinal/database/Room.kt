@@ -1,16 +1,17 @@
 package com.example.udacityprojectfinal.database
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import com.example.udacityprojectfinal.model.User
 
 
 @Dao
 interface UserDao {
-//    @Query("select * from userdatabase")
-//    fun getUsers() : LiveData<List<User>>
+    @Query("select * from databaseuser")
+    fun getAllUsers(): LiveData<List<User>>
 
-    //    @Query("select * from databaseuser")
-//    fun getAllUsers() : LiveData<List<User>>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: DatabaseUser)
 }

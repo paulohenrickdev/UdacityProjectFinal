@@ -46,6 +46,13 @@ class MainFragment : Fragment() {
             }
         })
 
+        viewModel.eventNavigateToHist.observe(viewLifecycleOwner, Observer { navigate ->
+            if(navigate) {
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToHistoricFragment())
+                viewModel.navigateToHistComplete()
+            }
+        })
+
         // Inflate the layout for this fragment
         return binding.root
     }

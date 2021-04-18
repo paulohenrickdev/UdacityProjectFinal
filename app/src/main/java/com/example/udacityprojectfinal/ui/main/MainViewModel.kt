@@ -42,6 +42,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val error : LiveData<Boolean>
         get() = _error
 
+    private val _eventNavigateToHist = MutableLiveData<Boolean>()
+    val eventNavigateToHist: LiveData<Boolean>
+        get() = _eventNavigateToHist
+
     fun searchUser() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -57,6 +61,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 errorCallAPI()
             }
         }
+    }
+
+    fun navigateToHist() {
+        _eventNavigateToHist.value = true
+    }
+
+    fun navigateToHistComplete() {
+        _eventNavigateToHist.value = false
     }
 
     private fun convertNetworkUserAsUser(user: NetworkUser) {

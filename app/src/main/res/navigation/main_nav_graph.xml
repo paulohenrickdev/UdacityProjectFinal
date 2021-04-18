@@ -45,6 +45,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_mainFragment_to_historicFragment"
+            app:destination="@id/historicFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
 
     </fragment>
     <fragment
@@ -83,5 +90,14 @@
         <action
             android:id="@+id/action_splashFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historicFragment"
+        android:name="com.example.udacityprojectfinal.ui.historic.HistoricFragment"
+        android:label="fragment_historic"
+        tools:layout="@layout/fragment_historic" >
+        <action
+            android:id="@+id/action_historicFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
 </navigation>
